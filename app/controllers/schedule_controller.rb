@@ -6,7 +6,7 @@ class ScheduleController < ApplicationController
       name: 'Breakfast',
       time: '8:00',
       place: 'Byte',
-      tag: [],
+      tags: [],
       description: 'FOOD GUYSS',
       date: Time.now
     }]
@@ -15,6 +15,18 @@ class ScheduleController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.new
+    @schedule = Schedule.new(schedule_params)
+    if @schedule.save
+      render json: @schedule
+    else 
+      puts 'Not saved'
+    end
+  end
+
+  private
+  def schedule_params
+    params
+      .require(:schedule)
+      .permit(:name, :time, :place, :tags, :description, :date)
   end
 end
