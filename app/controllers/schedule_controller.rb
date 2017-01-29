@@ -1,17 +1,7 @@
 class ScheduleController < ApplicationController
   
   def index
-    test = [{
-      id: 123,
-      name: 'Breakfast',
-      time: '8:00',
-      place: 'Byte',
-      tags: [],
-      description: 'FOOD GUYSS',
-      date: Time.now
-    }]
-
-    render json: test
+    render json: Schedule.all
   end
 
   def create
