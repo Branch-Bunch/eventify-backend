@@ -3,6 +3,7 @@ class ScheduleController < ApplicationController
   def index
     schedules = Schedule.all.map do |schedule|
       {
+        id: schedule[:id],
         name: schedule[:name],
         place: schedule[:place],
         time: schedule[:time],
