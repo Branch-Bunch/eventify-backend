@@ -8,7 +8,7 @@ class ScheduleController < ApplicationController
         place: schedule[:place],
         time: schedule[:time],
         duration: schedule[:duration],
-        tags: schedule[:tags],
+        tag: schedule[:tag],
       }
     end
     render json: schedules
@@ -32,7 +32,7 @@ class ScheduleController < ApplicationController
       :description,
       :date,
       :duration,
-      :tags => [],
+      :tag,
     )
   end
 end
