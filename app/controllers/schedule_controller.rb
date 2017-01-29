@@ -1,5 +1,5 @@
 class ScheduleController < ApplicationController
-  
+
   def index
     schedules = Schedule.all.map do |schedule|
       {
@@ -18,10 +18,16 @@ class ScheduleController < ApplicationController
     schedule = Schedule.new(schedule_params)
     if schedule.save
       render json: schedule
-    else 
+    else
       puts 'Not saved'
     end
   end
+
+  def show
+    detailedSchedule = Schedule.find(params[:id])
+    render json: detailedSchedule
+  end
+
 
   private
   def schedule_params
